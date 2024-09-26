@@ -18,8 +18,12 @@ public class physicsscript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.Space))
             rb.AddExplosionForce(500,
                 transform.position +new Vector3(0,-1,0),  2);
+
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+            rb.AddExplosionForce(500,
+                transform.position + new Vector3(0, -1, -1), 2);
     }
 }
