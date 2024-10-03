@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class moveball : MonoBehaviour
@@ -33,7 +35,7 @@ public class moveball : MonoBehaviour
             transform.Rotate(Vector3.up, 30* Time.deltaTime);
 
         if (Input.GetKey(KeyCode.S))
-            transform.position -= Vector3.forward * Time.deltaTime;
+            transform.position -= Vector3.back * Time.deltaTime;
 
         if (Input.GetKey(KeyCode.D))
             transform.Rotate(Vector3.up, -30 * Time.deltaTime);
@@ -43,6 +45,31 @@ public class moveball : MonoBehaviour
 
         if (Input.GetKey(KeyCode.E))
             transform.position -= Vector3.right * Time.deltaTime;
+
+     
+
+
         
+
+
+
+        
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        print(collision.gameObject.name);
+
+       
+        Football myfootball = collision.gameObject.GetComponent<Football>();
+        if (myfootball != null)
+        {
+      
+
+
+
+
+
+        }       
+
     }
 }
