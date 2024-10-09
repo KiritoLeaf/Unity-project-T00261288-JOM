@@ -6,10 +6,12 @@ using UnityEngine;
 
 public class moveball : MonoBehaviour
 {
+    public GameObject snowBallCloneTemplate;
     Animator animator;
     // Start is called before the first frame update
     void Start()
     {
+     
         animator = GetComponent<Animator>();
         if (animator == null)
             print("could not find aninmator component");
@@ -21,6 +23,12 @@ public class moveball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            GameObject newSnowballGO = Instantiate(snowBallCloneTemplate, transform.position + transform.forward + Vector3.up, Quaternion.identity);
+            SnowballScript myNewSnowball = newSnowballGO.GetComponent<SnowballScript>();
+            myNewSnowball.throwSnowball(transform);
+        }
         if (Input.GetKey(KeyCode.W))
         {
             transform.position += transform.forward * Time.deltaTime;
@@ -63,11 +71,8 @@ public class moveball : MonoBehaviour
         Football myfootball = collision.gameObject.GetComponent<Football>();
         if (myfootball != null)
         {
-      
 
-
-
-
+            myfootball.Kick();
 
         }       
 

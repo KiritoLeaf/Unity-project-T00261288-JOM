@@ -8,17 +8,14 @@ public class Football : MonoBehaviour
     Rigidbody rb;
         internal void Kick()
     {
-
-
-        print("Ive been Kicked!!");
-        rb.AddExplosionForce(50000,
-            transform.position + new Vector3(0,-1,0), 2);
+        print("Ive been kicked!!");
+        rb.AddExplosionForce(500, transform.position + new Vector3(0, -1, -1), 2);
 
     }
     // Start is called before the first frame update
     void Start()
     {
-      
+        rb = GetComponent<Rigidbody>();
 
 
     }
@@ -26,7 +23,11 @@ public class Football : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-  
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            rb.AddExplosionForce(500, transform.position + new Vector3(0, -1, -1), 2);
+
+        }
 
 
     }
